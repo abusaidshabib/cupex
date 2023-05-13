@@ -5,8 +5,8 @@ import { FiMail } from "react-icons/fi";
 
 const Footer = () => {
   return (
-    <div className="h-1/2 bg-white-900 grid grid-cols-4 py-16 px-40 place-content-center gap-20">
-      <div className="col-span-1">
+    <div className="h-1/2 bg-white-900 grid grid-cols-4 py-16 px-40 place-content-center gap-20 max-md:px-4 max-md:gap-5 max-md:py-5">
+      <div className="col-span-1 max-md:col-span-2">
         <p className="font-cursive text-5xl font-extrabold text-orange-500 col-span-4 pb-4">
           Cupex
         </p>
@@ -15,19 +15,19 @@ const Footer = () => {
           roasted to bring out the full flavor and aroma.
         </p>
       </div>
-      <div className="col-span-1">
+      <div className="col-span-1 max-md:col-span-2">
         <h1 className="text-2xl font-semibold text-orange-500 pb-5">Explore</h1>
         <Link className="text-base text-white-500" to="/">
           Home
         </Link>
       </div>
-      <div className="col-span-1">
+      <div className="col-span-1 max-md:col-span-2">
         <h1 className="text-2xl font-semibold text-white-900 pb-5">Explore</h1>
         <Link className="text-base text-white-500" to="/">
           Items-menu
         </Link>
       </div>
-      <div className="col-span-1">
+      <div className="col-span-1 max-md:col-span-2">
         <h1 className="text-2xl font-semibold text-white-500 pb-5">Contact</h1>
         <p className="flex pb-5">
           <MdLocationOn className="text-white-500 text-2xl" />{" "}

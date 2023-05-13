@@ -3,6 +3,8 @@ import Main from "../../Layout/Main";
 import Home from "../../Pages/Home";
 import Login from "../../Pages/Login";
 import Register from "../../Pages/Register";
+import MenuItems from "../../Pages/MenuItems";
+import PrivateRouter from "../PrivateRouter/PrivateRouter";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +15,14 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
+      {
+        path: "/menu",
+        element: (
+          <PrivateRouter>
+            <MenuItems></MenuItems>
+          </PrivateRouter>
+        ),
+      },
     ],
   },
   {
@@ -22,7 +32,7 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register></Register>,
-  }
+  },
 ]);
 
 

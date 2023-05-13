@@ -4,8 +4,8 @@ import { SiCoffeescript } from "react-icons/si";
 
 const AboutUs = () => {
   return (
-    <div className="grid grid-cols-12 place-items-center px-40 py-20 text-black-500 gap-10">
-      <div className="col-span-5">
+    <div className="grid grid-cols-12 place-items-center px-40 py-20 text-black-500 gap-10 max-md:px-3 lg:px-20">
+      <div className="col-span-12 md:col-span-12 lg:col-span-5">
         <p className="text-sm pb-2 text-orange-500 uppercase">What we doing</p>
         <h1 className="text-5xl font-semibold pb-4">About Us</h1>
         <p className="font-serif">
@@ -16,7 +16,7 @@ const AboutUs = () => {
           carefully roasted to bring out the full flavor and aroma.
         </p>
       </div>
-      <div className="col-span-7 place-content-center grid grid-cols-12 gap-10">
+      <div className="place-content-center grid grid-cols-12 col-span-12 gap-10 max-md:col-span-12 lg:col-span-7">
         <div className="col-span-6">
           <GiCoffeeBeans className="text-5xl pb-2 text-orange-500" />
           <p className="text-2xl font-semibold">The best World sorts</p>

@@ -1,10 +1,42 @@
+import { useContext } from "react";
 import {FcGoogle} from "react-icons/fc";
+import { AuthContext } from "../Context/UserContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import GoogleSignIn from "../components/Shared/GoogleSignIn";
+import useTitle from "../Hooks/UseTitle/UseTitle";
 
 const Login = () => {
+  useTitle("Login")
+
+  const { logIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
+    const handleLogin = (event) => {
+      event.preventDefault();
+      const form = event.target;
+      const email = form.email.value;
+      const password = form.password.value;
+      console.log(email, password);
+
+      logIn(email, password)
+        .then((result) => {
+          const user = result.user;
+          toast("successfully log in");
+          navigate(from, { replace: true });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+
   return (
-    <div className="grid grid-cols-12 min-h-screen">
+    <div className="grid min-h-screen gap-10">
       <div className="col-span-6 login-bg"></div>
-      <form className="col-span-6 grid place-content-center px-20">
+      <form onSubmit={handleLogin} className="col-span-6 grid gap-2 place-content-center px-20">
         <p className="text-orange-500 text-sm uppercase text-center pb-3 font-medium tracking-wider">
           login
         </p>
@@ -19,23 +51,22 @@ const Login = () => {
         <input
           className="bg-white-300 px-8 py-5"
           type="email"
-          name=""
-          id=""
+          name="email"
+          id="email"
           placeholder="Enter your email"
         />
         <br className="py-3" />
         <input
           className="bg-white-300 px-8 py-5"
           type="password"
-          name=""
-          id=""
+          name="password"
+          id="password"
           placeholder="Enter your password"
         />
         <br className="py-3" />
-        <button className="border border-white-800 py-5 text-black-900 flex items-center justify-center hover:text-white-500 hover:bg-black-900">
-          <FcGoogle className="text-3xl pr-2"/>
-          <span className="pl-2">Sign in with Google</span>
-        </button>
+        <GoogleSignIn></GoogleSignIn>
+        <br className="py-3" />
+        <p>If you have already an account then <Link className="text-orange-600 underline" to="/login">Login</Link></p>
         <br className="py-3" />
         <input
           className="bg-black-600 py-5 text-white-500"
@@ -43,6 +74,7 @@ const Login = () => {
           value="Login Now"
         />
       </form>
+      <ToastContainer/>
     </div>
   );
 };

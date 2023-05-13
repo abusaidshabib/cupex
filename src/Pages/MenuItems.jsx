@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import useTitle from "../Hooks/UseTitle/UseTitle";
 
 const MenuItems = () => {
+  useTitle("Menus");
   const [menu, setMenu] = useState();
   useEffect(() => {
     fetch("https://cupex-backend.vercel.app/menu")
@@ -9,15 +10,14 @@ const MenuItems = () => {
       .then((data) => setMenu(data.data));
   }, []);
 
-
   return (
-    <div className="text-center px-40 bg-black-800 py-20 max-md:px-6 max-md:2">
+    <div className="text-center px-40 bg-black-800 py-20 max-md:px-6 max-md:2">z
       <p className="text-sm pb-2 text-orange-500 uppercase">menu Items</p>
       <p className="text-5xl font-semibold pb-4 text-white-500">
         Cupex popular Menu
       </p>
       <div className="grid gap-10 py-10">
-        {menu?.slice(0, 3).map((data) => (
+        {menu?.map((data) => (
           <div
             key={data._id}
             className="grid grid-cols-12 items-center justify-between border border-white-500 p-8 hover:bg-white-900"
@@ -40,9 +40,6 @@ const MenuItems = () => {
           </div>
         ))}
       </div>
-      <Link to="/menu" className="bg-orange-500 px-8 py-3 rounded-md">
-        See More
-      </Link>
     </div>
   );
 };
